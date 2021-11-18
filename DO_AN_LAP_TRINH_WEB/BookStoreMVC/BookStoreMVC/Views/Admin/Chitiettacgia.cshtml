@@ -1,0 +1,52 @@
+﻿@model BookStoreMVC.Models.TacGia
+
+@{
+    ViewBag.Title = "Chitiettacgia";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">THÔNG TIN CHI TIẾT TÁC GIẢ</h2>
+
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên tác giả :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTG)
+        </dd>
+
+        <dt>
+            Địa chỉ :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            Tiểu sử :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TieuSu)
+        </dd>
+
+        <dt>
+            Điện thoại :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+
+    </dl>
+</div>
+<p style="text-align:center">
+    @Html.ActionLink("Điều chỉnh", "Suatacgia", new { id = Model.MaTG }) |
+    @Html.ActionLink("Trở về", "tacgia")
+</p>

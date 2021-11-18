@@ -1,0 +1,49 @@
+﻿@model BookStoreMVC.Models.NhaXuatBan
+
+@{
+    ViewBag.Title = "Xoanhaxuatban";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">XÁC NHẬN THÔNG TIN CẦN XÓA</h2>
+<h3 style="text-align:center">Bạn quyết định xóa nhà xuất bản này?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên nhà xuất bản :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNXB)
+        </dd>
+
+        <dt>
+            Địa chỉ :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            Điện thoại :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div style="text-align:center" class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("TRỞ VỀ", "Nhaxuatban")
+        </div>
+    }
+</div>

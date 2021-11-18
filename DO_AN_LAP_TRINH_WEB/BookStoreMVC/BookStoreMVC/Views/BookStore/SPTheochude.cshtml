@@ -1,0 +1,47 @@
+﻿@using BookStoreMVC.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<Sach>
+@{
+    ViewBag.Title = "SPTheochude";
+    Layout = "~/Views/_Layout.cshtml";
+}
+<h3 style="text-align:center;color:red">SÁCH THEO CHỦ ĐỀ</h3>
+<div class="row">
+    @foreach (var sach in Model)
+    {
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <a href="@Url.Action("Details","BookStore",new { id = sach.MaSach})">
+                    <img src="@sach.AnhBia" alt="@sach.TenSach" width="200">
+                    <div class="caption">
+                        <h4>@sach.GiaBan<span> đồng</span></h4>
+                        <h4>
+                            <a href="#">@sach.TenSach</a>
+                        </h4>
+
+                        <p>@sach.MoTa<a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+                    </div>
+                </a>
+                <div class="ratings">
+                    <p class="pull-right">15 reviews</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("SPTheochude", new { page = page }))
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>

@@ -1,0 +1,62 @@
+﻿@using BookStoreMVC.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<BookStoreMVC.Models.DonDatHang>
+
+@{
+    ViewBag.Title = "Ddh";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">QUẢN LÍ THÔNG TIN CHỦ ĐỀ</h2>
+
+<p style="text-align:center">
+    @Html.ActionLink("Thêm mới", "Themmoiddh")
+</p>
+<table class="table">
+    <tr>
+        <th style="width:200px">Mã khách hàng</th>
+        <th style="width:200px">Ngày đơn hàng</th>
+        <th style="width:200px">Ngày giao</th>
+        <th style="width:200px">Đã thanh toán</th>
+        <th style="width:200px">Tình trạng giao hàng</th>
+        <th style="width:200px"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayGiao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DaThanhToan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TinhTrangGiaoHang)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Suaddh", new { id = item.SoDH }) |
+                @Html.ActionLink("Chi tiết", "Chitietddh", new { id = item.SoDH }) |
+                @Html.ActionLink("Xóa", "Xoaddh", new { id = item.SoDH })
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Ddh", new { page = page }))
+   
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>

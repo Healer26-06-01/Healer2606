@@ -1,0 +1,43 @@
+﻿@model BookStoreMVC.Models.NhaXuatBan
+
+@{
+    ViewBag.Title = "Chitietnhaxuatban";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">THÔNG TIN CHI TIẾT CHỦ ĐỀ</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên nhà xuất bản :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNXB)
+        </dd>
+
+        <dt>
+            Địa chỉ :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            Điện thoại :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+
+    </dl>
+</div>
+<p style="text-align:center">
+    @Html.ActionLink("Điều chỉnh", "Suanhaxuatban", new { id = Model.MaNXB }) |
+    @Html.ActionLink("Trở về", "Nhaxuatban")
+</p>

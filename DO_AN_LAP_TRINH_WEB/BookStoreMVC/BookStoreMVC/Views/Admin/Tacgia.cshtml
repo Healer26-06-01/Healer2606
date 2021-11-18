@@ -1,0 +1,58 @@
+﻿@using BookStoreMVC.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<BookStoreMVC.Models.TacGia>
+
+@{
+    ViewBag.Title = "Tacgia";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">QUẢN LÍ THÔNG TIN TÁC GIẢ</h2>
+
+<p style="text-align:center">
+    @Html.ActionLink("Thêm mới", "Themmoitacgia")
+</p>
+<table class="table">
+    <tr>
+        <th style="width:200px">Tên tác giả</th>
+        <th style="width:200px">Địa chỉ</th>
+        <th style="width:200px">Tiểu sử</th>
+        <th style="width:200px">Điện thoại</th>
+        <th style="width:200px"></th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenTG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TieuSu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DienThoai)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Suatacgia", new { id = item.MaTG }) |
+                @Html.ActionLink("Chi tiết", "Chitiettacgia", new { id = item.MaTG }) |
+                @Html.ActionLink("Xóa", "Xoatacgia", new { id = item.MaTG })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Tacgia", new { page = page }))
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>

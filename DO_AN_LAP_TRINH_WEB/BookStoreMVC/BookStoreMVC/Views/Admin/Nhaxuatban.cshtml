@@ -1,0 +1,52 @@
+﻿@using BookStoreMVC.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<BookStoreMVC.Models.NhaXuatBan>
+
+@{
+    ViewBag.Title = "Nhaxuatban";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">QUẢN LÍ THÔNG TIN NHÀ XUẤT BẢN</h2>
+
+<p style="text-align:center">
+    @Html.ActionLink("Thêm mới", "Themmoinhaxuatban")
+</p>
+<table class="table">
+    <tr>
+        <th style="width:200px">Tên chủ đề</th>
+        <th style="width:200px">Địa chỉ</th>
+        <th style="width:200px">Số điện thoại</th>
+        <th style="width:200px"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNXB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DienThoai)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Suanhaxuatban", new { id = item.MaNXB }) |
+                @Html.ActionLink("Chi tiết", "Chitietnhaxuatban", new { id = item.MaNXB }) |
+                @Html.ActionLink("Xóa", "Xoanhaxuatban", new { id = item.MaNXB })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Nhaxuatban", new { page = page }))
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>

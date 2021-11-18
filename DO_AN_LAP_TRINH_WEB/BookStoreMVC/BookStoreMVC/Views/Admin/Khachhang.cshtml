@@ -1,0 +1,68 @@
+﻿@using BookStoreMVC.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<BookStoreMVC.Models.KhachHang>
+
+@{
+    ViewBag.Title = "Khachhang";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">QUẢN LÍ THÔNG TIN KHÁCH HÀNG</h2>
+
+<p style="text-align:center">
+    @Html.ActionLink("Thêm mới", "Themmoikhachhang")
+</p>
+<table class="table">
+    <tr>
+        <th style="width:200px">Tên khách hàng</th>
+        <th style="width:200px">Tài khoản</th>
+        <th style="width:200px">Mật khẩu</th>
+        <th style="width:200px">Email</th>
+        <th style="width:200px">Địa chỉ</th>
+        <th style="width:200px">Số điện thoại</th>
+        <th style="width:200px">Ngày sinh</th>
+        <th style="width:200px"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaiKhoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MatKhau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiachiKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DienThoaiKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgaySinh)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Suakhachhang", new { id = item.MaKH }) |
+                @Html.ActionLink("Chi tiết", "Chitietkhachhang", new { id = item.MaKH }) |
+                @Html.ActionLink("Xóa", "Xoakhachhang", new { id = item.MaKH })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Khachhang", new { page = page }))
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>

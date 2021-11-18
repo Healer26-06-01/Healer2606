@@ -1,0 +1,45 @@
+﻿@using BookStoreMVC.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<BookStoreMVC.Models.ChuDe>
+
+@{
+    ViewBag.Title = "Chude";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">QUẢN LÍ THÔNG TIN CHỦ ĐỀ</h2>
+
+<p style="text-align:center">
+    @Html.ActionLink("Thêm mới", "Themmoichude")
+</p>
+<table class="table">
+    <tr>
+        <th style="width:200px">Tên chủ đề</th>
+        <th style="width:200px"></th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenChuDe)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Suachude", new { id = item.MaCD }) |
+                @Html.ActionLink("Chi tiết", "Chitietchude", new { id = item.MaCD }) |
+                @Html.ActionLink("Xóa", "Xoachude", new { id = item.MaCD })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Chude", new { page = page }))
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>

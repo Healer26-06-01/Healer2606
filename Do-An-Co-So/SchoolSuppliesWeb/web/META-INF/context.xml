@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/SchoolSuppliesWeb">
+  <Environment name="serverName" type="java.lang.String" value="localhost"/>
+  <Environment name="dbName" type="java.lang.String" value="SchoolSuppliesStore"/>
+  <Environment name="portNumber" type="java.lang.String" value="1433"/>
+  <Environment name="userID" type="java.lang.String" value="sa"/>
+  <Environment name="password" type="java.lang.String" value="123456"/>
+</Context>

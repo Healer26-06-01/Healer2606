@@ -1,0 +1,65 @@
+﻿@model BookStoreMVC.Models.DonDatHang
+
+@{
+    ViewBag.Title = "Xoaddh";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">XÁC NHẬN THÔNG TIN CẦN XÓA</h2>
+<h3 style="text-align:center">Bạn quyết định xóa đơn đặt hàng này?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã khách hàng :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaKH)
+        </dd>
+
+        <dt>
+            Ngày đơn hàng :
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/mm/yyyy}", Model.NgayDH)
+        </dd>
+
+        <dt>
+            Ngày giao :
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/mm/yyyy}", Model.NgayGiao)
+        </dd>
+
+        <dt>
+            Đã thanh toán :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DaThanhToan)
+        </dd>
+
+        <dt>
+            Tình trạng giao hàng :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrangGiaoHang)
+        </dd>
+    </dl>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div style="text-align:center" class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("TRỞ VỀ", "Ddh")
+        </div>
+    }
+</div>

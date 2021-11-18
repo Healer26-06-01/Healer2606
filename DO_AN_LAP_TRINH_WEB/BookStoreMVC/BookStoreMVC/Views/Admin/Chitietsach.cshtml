@@ -1,0 +1,81 @@
+﻿@model BookStoreMVC.Models.Sach
+
+@{
+    ViewBag.Title = "Chitietsach";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">THÔNG TIN CHI TIẾT SÁCH</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Tên sách :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSach)
+        </dd>
+
+        <dt>
+            Giá bán :
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.GiaBan) VNĐ
+        </dd>
+
+        <dt>
+            Mô tả :
+        </dt>
+
+        <dd style="width:600px;text-align:justify">
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            Ảnh bìa :
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.AnhBia)" width="120px" />
+        </dd>
+
+        <dt>
+            Ngày cập nhật :
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/mm/yyyy}", Model.NgayCapNhat)
+        </dd>
+
+        <dt>
+            Số lượng tồn :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongTon)
+        </dd>
+
+        <dt>
+            Chủ đề :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaCD)
+        </dd>
+
+        <dt>
+            Nhà xuất bản :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaNXB)
+        </dd>
+
+    </dl>
+</div>
+<p style="text-align:center">
+    @Html.ActionLink("Điều chỉnh", "Suasach", new { id = Model.MaSach }) |
+    @Html.ActionLink("Trở về", "Sach")
+</p>

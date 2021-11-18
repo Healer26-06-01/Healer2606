@@ -1,0 +1,82 @@
+﻿@model BookStoreMVC.Models.KhachHang
+
+@{
+    ViewBag.Title = "Xoakhachhang";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">XÁC NHẬN THÔNG TIN CẦN XÓA</h2>
+<h3 style="text-align:center">Bạn quyết định xóa khách hàng này?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên khách hàng :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt>
+            Tài khoản :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan)
+        </dd>
+
+        <dt>
+            Mật khẩu :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+        <dt>
+            Email :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Địa chỉ :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiachiKH)
+        </dd>
+
+        <dt>
+            Số điện thoại :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoaiKH)
+        </dd>
+
+        <dt>
+            Ngày sinh :
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/mm/yyyy}", Model.NgaySinh)
+        </dd>
+
+    </dl>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div style="text-align:center" class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("TRỞ VỀ", "Khachhang")
+        </div>
+    }
+</div>

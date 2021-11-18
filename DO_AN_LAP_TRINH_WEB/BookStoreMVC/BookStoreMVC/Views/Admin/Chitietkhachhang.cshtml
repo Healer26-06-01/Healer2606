@@ -1,0 +1,75 @@
+﻿@model BookStoreMVC.Models.KhachHang
+
+@{
+    ViewBag.Title = "Chitietkhachhang";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">THÔNG TIN CHI TIẾT KHÁCH HÀNG</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên khách hàng :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt>
+            Tài khoản :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan)
+        </dd>
+
+        <dt>
+            Mật khẩu :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+        <dt>
+            Email :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Địa chỉ :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiachiKH)
+        </dd>
+
+        <dt>
+            Số điện thoại :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoaiKH)
+        </dd>
+
+        <dt>
+            Ngày sinh :
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/mm/yyyy}", Model.NgaySinh)
+        </dd>
+
+    </dl>
+</div>
+<p style="text-align:center">
+    @Html.ActionLink("Điều chỉnh", "Suakhachhang", new { id = Model.MaKH }) |
+    @Html.ActionLink("Trở về", "Khachhang")
+</p>

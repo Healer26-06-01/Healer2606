@@ -1,0 +1,59 @@
+﻿@model BookStoreMVC.Models.DonDatHang
+
+@{
+    ViewBag.Title = "Chitietddh";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">THÔNG TIN CHI TIẾT ĐƠN ĐẶT HÀNG</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã khách hàng :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaKH)
+        </dd>
+
+        <dt>
+            Ngày đơn hàng :
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/mm/yyyy}", Model.NgayDH)
+        </dd>
+
+        <dt>
+            Ngày giao :
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/mm/yyyy}", Model.NgayGiao)
+        </dd>
+
+        <dt>
+            Đã thanh toán :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DaThanhToan)
+        </dd>
+
+        <dt>
+            Tình trạng giao hàng :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrangGiaoHang)
+        </dd>
+
+    </dl>
+</div>
+<p style="text-align:center">
+    @Html.ActionLink("Điều chỉnh", "Suaddh", new { id = Model.SoDH }) |
+    @Html.ActionLink("Trở về", "Ddh")
+</p>
